@@ -1,6 +1,6 @@
 import axios from "../ultils/axiosCustomize";
 
-const postCreateNewuser = (email, password, username, role, image) => {
+const postCreateNewUser = (email, password, username, role, image) => {
   const data = new FormData();
   data.append("email", email);
   data.append("password", password);
@@ -25,4 +25,8 @@ const putUpdateUser = (id, username, role, image) => {
   return axios.put("api/v1/participant", data);
 };
 
-export { postCreateNewuser, getAllUsers, putUpdateUser };
+const deleteUser = (userId) => {
+  return axios.delete("api/v1/participant", { data: { id: userId } });
+};
+
+export { postCreateNewUser, getAllUsers, putUpdateUser, deleteUser };

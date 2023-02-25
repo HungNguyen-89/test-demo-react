@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
 import { toast } from "react-toastify";
-import { postCreateNewuser } from "../../../services/apiServices";
+import { postCreateNewUser } from "../../../services/apiServices";
 
 const ModalCreateUser = (props) => {
   const { show, setShow } = props;
@@ -61,7 +61,7 @@ const ModalCreateUser = (props) => {
       return;
     }
 
-    let data = await postCreateNewuser(email, password, username, role, image);
+    let data = await postCreateNewUser(email, password, username, role, image);
     console.log(">>> check res: ", data);
     if (data && data.EC === 0) {
       toast.success(data.EM);
