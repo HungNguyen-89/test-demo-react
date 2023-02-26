@@ -3,11 +3,17 @@ import "./ManageUser.scss";
 import { FcPlus } from "react-icons/fc";
 import TableUser from "./TableUser";
 import { useEffect, useState } from "react";
-import { getAllUsers } from "../../../services/apiServices";
+import {
+  getAllUsers,
+  getUserWithPaginate,
+} from "../../../services/apiServices";
 import ModalUpdateUser from "./ModalUpdateUser";
 import ModalDeleteUser from "./ModalDeleteUser";
+import TableUserPaginate from "./TableUserPaginate";
 
 const ManageUser = (props) => {
+  const LIMIT_USER = 6;
+  const [pageCount, setPageCount] = useState(0);
   const [showModalCreateUser, setShowModalCreateUser] = useState(false);
   const [showModalUpdateUser, setShowModalUpdateUser] = useState(false);
   const [dataUpdate, setDataUpdate] = useState([]);
@@ -18,13 +24,23 @@ const ManageUser = (props) => {
   const [listUser, setListUser] = useState([]);
 
   useEffect(() => {
-    fetchListUsers();
+    // fetchListUsers();
+    fetchListUsersWithPaginate(1);
   }, []);
 
   const fetchListUsers = async () => {
     let res = await getAllUsers();
     if (res.EC === 0) {
       setListUser(res.DT);
+    }
+  };
+
+  const fetchListUsersWithPaginate = async (page) => {
+    let res = await getUserWithPaginate(page, LIMIT_USER);
+    if (res.EC === 0) {
+      console.log("res.dt = ", res.DT);
+      setListUser(res.DT.users);
+      setPageCount(res.DT.totalPages);
     }
   };
 
@@ -57,10 +73,17 @@ const ManageUser = (props) => {
         </div>
         <div className="table-users-container">
           {" "}
-          <TableUser
+          {/* <TableUser
             listUser={listUser}
             handleClickBtnUpdate={handleClickBtnUpdate}
             handleClickBtnDelete={handleClickBtnDelete}
+          /> */}
+          <TableUserPaginate
+            listUser={listUser}
+            handleClickBtnUpdate={handleClickBtnUpdate}
+            handleClickBtnDelete={handleClickBtnDelete}
+            fetchListUsersWithPaginate={fetchListUsersWithPaginate}
+            pageCount={pageCount}
           />
         </div>
         <ModalCreateUser

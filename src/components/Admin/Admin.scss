@@ -16,7 +16,10 @@
         }
 
         .admin-main {
-            // border: 1px solid red;
+           .user-pagination{
+            display: flex;
+            justify-content: center;
+           }
         }
     }
 }
