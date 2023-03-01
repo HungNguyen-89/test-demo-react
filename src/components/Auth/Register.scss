@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
     .header {
         height: 45px;
         text-align: right;
@@ -12,7 +12,7 @@
             border: 1px solid;
 
             &:hover {
-                background: white;
+                background-color: white;
             }
         }
     }
@@ -26,28 +26,40 @@
     .welcome {
         font-size: 20px;
         padding: 10px 0;
+        text-align: center;
     }
 
     .content-form {
 
         input {
-            margin-bottom: 15px;
+            margin-bottom: 15px ;
             margin-top: 3px;
         }
 
         button {
             width: 100%;
+            width: 100%;
             height: 40px;
             border: none;
-            margin: 20px 0;
             border-radius: 5px;
-            ;
-            background-color: black;
+            margin: 20px 0;
             color: white;
+            background: blue;
         }
 
         .back {
             cursor: pointer;
+        }
+
+        .pass-group {
+            position: relative;
+
+            .icons-eye {
+                cursor: pointer;
+                position: absolute;
+                right: 10px;
+                bottom: 10px;
+            }
         }
     }
 }

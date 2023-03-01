@@ -4,9 +4,10 @@ import Admin from "./components/Admin/Admin";
 import HomePage from "./components/Home/HomePage";
 import DashBoard from "./components/Admin/Content/DashBoard";
 import ManageUser from "./components/Admin/Content/ManageUser";
-import Login from "./components/Admin/Auth/Login";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 const Layout = (props) => {
@@ -22,6 +23,7 @@ const Layout = (props) => {
           <Route path="manage-users" element={<ManageUser />} />
         </Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
       </Routes>
 
       <ToastContainer
