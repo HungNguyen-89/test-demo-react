@@ -3,7 +3,7 @@ import NProgress from "nprogress";
 
 NProgress.configure({
   showSpinner: false,
-  trickleSpeed: 100,
+  trickleSpeed: 50,
 });
 
 const instance = axios.create({
