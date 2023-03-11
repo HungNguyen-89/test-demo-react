@@ -38,6 +38,7 @@ const QuizQA = () => {
 
   const [listQuiz, setListQuiz] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState({});
+
   useEffect(() => {
     fetchQuiz();
   }, []);
@@ -228,12 +229,12 @@ const QuizQA = () => {
       questions: questionClone,
     });
 
+    console.log(">>> check questionClone: ", questionClone);
+
     if (res && res.EC === 0) {
       toast.success(res.EM);
       fetchQuizWithQA();
     }
-    console.log(">>>check res: ", res);
-
     // setQuestions(initQuestion);
   };
 
@@ -278,6 +279,8 @@ const QuizQA = () => {
       setIsPreviewImage(true);
     }
   };
+
+  console.log(">>> check question: ", questions);
 
   return (
     <div className="questions-container">
